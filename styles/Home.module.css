@@ -47,7 +47,6 @@
 .gridWrapper h3 {
   text-transform: uppercase;
   text-align: left;
-  padding-left: 60px;
   margin-bottom: 0;
 }
 
@@ -55,5 +54,6 @@
   max-width: 1400px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
 }
