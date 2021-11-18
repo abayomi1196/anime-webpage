@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_ANIMES = gql`
   query allAnimes($type: MediaType, $sort: [MediaSort]) {
-    Page(page: 1, perPage: 10) {
+    Page(page: 1, perPage: 20) {
       media(type: $type, sort: $sort) {
         id
         genres
@@ -12,6 +12,7 @@ export const GET_ANIMES = gql`
         format
 
         coverImage {
+          medium
           extraLarge
         }
 
@@ -32,6 +33,48 @@ export const GET_ANIMES = gql`
 
         endDate {
           year
+        }
+      }
+    }
+  }
+`;
+
+export const GET_SINGLE_ANIME = gql`
+  query singleShow($mediaId: Int) {
+    Media(id: $mediaId) {
+      id
+      duration
+      description
+      bannerImage
+      episodes
+
+      coverImage {
+        medium
+      }
+
+      title {
+        english
+        native
+        userPreferred
+      }
+
+      externalLinks {
+        site
+        url
+      }
+
+      characters {
+        nodes {
+          image {
+            large
+          }
+          id
+          name {
+            first
+            last
+            middle
+          }
+          description
         }
       }
     }

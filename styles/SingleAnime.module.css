@@ -1,0 +1,27 @@
+.container {
+  background-color: #cad0d8;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #647380;
+}
+
+.bannerWrapper {
+  height: 400px;
+  width: 100%;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .bannerWrapper {
+    height: 250px;
+  }
+}
+
+.bannerImage {
+  object-fit: cover;
+  height: 500px;
+}
