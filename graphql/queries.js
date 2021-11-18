@@ -5,11 +5,10 @@ export const GET_ANIMES = gql`
     Page(page: 1, perPage: 10) {
       media(type: $type, sort: $sort) {
         id
-        status
         genres
         description
         episodes
-        duration
+        averageScore
 
         coverImage {
           extraLarge

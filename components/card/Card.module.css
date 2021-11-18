@@ -6,7 +6,9 @@
   border-radius: 10px;
   width: 100%;
   transition: all 0.25s ease;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: aliceblue;
   cursor: pointer;
   overflow: hidden;
@@ -69,17 +71,29 @@
 .cardText .cardText__duration {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
-  align-items: center;
+  font-size: 15px;
 }
 
 .cardText__duration > p:first-of-type {
   display: flex;
   flex-direction: column;
+  margin-bottom: 0;
 }
 
 .cardText__duration > p:first-of-type > span:first-of-type {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+.cardText__description {
+  padding: 0 0.6rem;
+  margin: 8px 0;
+  font-size: 13.5px;
+}
+
+.cardText__studios {
+  background-color: rgba(202, 208, 216, 0.377);
+  padding: 0.6rem;
+  font-size: 13px;
 }

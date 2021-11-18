@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./Card.module.css";
 
 function Card({ anime }) {
+  console.log(anime.studios.nodes);
   return (
     <a className={styles.card}>
       <div className={styles.cardImage}>
@@ -24,12 +25,26 @@ function Card({ anime }) {
         <div className={styles.cardText__duration}>
           <p>
             <span>
-              {anime.startDate.year} - {anime.endDate.year || "PRESENT"}
+              {anime.startDate.year}{" "}
+              {anime.endDate.year ? `- ${anime.endDate.year}` : null}
             </span>
-            {anime.episodes && <span>{anime.episodes} episodes</span>}
+            <span>{anime.episodes ? `${anime.episodes} episodes` : "N/A"}</span>
           </p>
-          <p>{anime.duration} mins.</p>
+          <p>{anime.averageScore} / 100</p>
         </div>
+      </div>
+      <div
+        className={styles.cardText__description}
+        dangerouslySetInnerHTML={{
+          __html: `${anime.description.slice(0, 200)}...`,
+        }}
+      ></div>
+
+      <div className={styles.cardText__studios}>
+        {anime.studios.nodes
+          .slice(0, 2)
+          .map((node) => node.name)
+          .join(", ")}
       </div>
     </a>
   );
