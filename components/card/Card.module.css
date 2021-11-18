@@ -1,0 +1,30 @@
+.card {
+  margin: 1rem auto;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  max-width: 300px;
+  display: inline-block;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}
+
+.card img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card h4 {
+  margin-top: 0.4rem;
+  text-transform: capitalize;
+  padding-left: 0.4rem;
+  font-size: 0.95rem;
+}
