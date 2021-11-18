@@ -10,7 +10,6 @@ export const GET_ANIMES = gql`
           extraLarge
         }
         title {
-          english
           userPreferred
         }
       }

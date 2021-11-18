@@ -49,7 +49,7 @@ export default function Home({ popularAnimes, trendingAnimes }) {
           <h3>Most Popular.</h3>
           <div className={styles.grid}>
             {popularAnimes.map((anime) => (
-              <Card anime={anime} key={anime.key} />
+              <Card anime={anime} key={anime.id} />
             ))}
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function Home({ popularAnimes, trendingAnimes }) {
           <h3>Currently Trending</h3>
           <div className={styles.grid}>
             {trendingAnimes.map((anime) => (
-              <Card anime={anime} key={anime.key} />
+              <Card anime={anime} key={anime.id} />
             ))}
           </div>
         </div>
