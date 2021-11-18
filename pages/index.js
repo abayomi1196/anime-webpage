@@ -36,7 +36,7 @@ export default function Home({ popularAnimes, trendingAnimes }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Popular Anime List</title>
+        <title>Popular Anime List</title>h
         <meta
           name='description'
           content='Anime List showing both currently trending and old time classics for old heads'
@@ -72,13 +72,7 @@ export default function Home({ popularAnimes, trendingAnimes }) {
         >
           View Code{" "}
           <span>
-            <Image
-              src='/github.svg'
-              alt='Github Logo'
-              // objectFit={"cover"}
-              width={82}
-              height={46}
-            />
+            <Image src='/github.svg' alt='Github Logo' width={82} height={46} />
           </span>
         </a>
       </footer>

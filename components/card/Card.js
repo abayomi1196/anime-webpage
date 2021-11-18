@@ -1,9 +1,9 @@
 import Image from "next/image";
+import parse from "html-react-parser";
 
 import styles from "./Card.module.css";
 
 function Card({ anime }) {
-  console.log(anime.studios.nodes);
   return (
     <a className={styles.card}>
       <div className={styles.cardImage}>
@@ -28,17 +28,18 @@ function Card({ anime }) {
               {anime.startDate.year}{" "}
               {anime.endDate.year ? `- ${anime.endDate.year}` : null}
             </span>
-            <span>{anime.episodes ? `${anime.episodes} episodes` : "N/A"}</span>
+            <span>
+              {" "}
+              {anime.format} •{" "}
+              {anime.episodes ? `${anime.episodes} episodes` : "N/A"}
+            </span>
           </p>
           <p>{anime.averageScore} / 100</p>
         </div>
       </div>
-      <div
-        className={styles.cardText__description}
-        dangerouslySetInnerHTML={{
-          __html: `${anime.description.slice(0, 200)}...`,
-        }}
-      ></div>
+      <div className={styles.cardText__description}>
+        {parse(`${anime.description.slice(0, 200)}...`)}
+      </div>
 
       <div className={styles.cardText__studios}>
         {anime.studios.nodes

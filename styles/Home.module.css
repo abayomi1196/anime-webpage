@@ -48,6 +48,9 @@
   text-transform: uppercase;
   text-align: left;
   margin-bottom: 0;
+  color: #647380;
+  line-height: 1.15;
+  letter-spacing: 0.1em;
 }
 
 .grid {

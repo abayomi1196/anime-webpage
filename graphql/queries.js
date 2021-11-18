@@ -9,6 +9,7 @@ export const GET_ANIMES = gql`
         description
         episodes
         averageScore
+        format
 
         coverImage {
           extraLarge
