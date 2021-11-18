@@ -1,16 +1,10 @@
 import { gql } from "@apollo/client";
 
-export const GET_ALL_ANIMES = gql`
-  query allAnimes(
-    $page: Int
-    $perPage: Int
-    $type: MediaType
-    $sort: [MediaSort]
-  ) {
-    Page(page: $page, perPage: $perPage) {
+export const GET_ANIMES = gql`
+  query allAnimes($type: MediaType, $sort: [MediaSort]) {
+    Page(page: 1, perPage: 10) {
       media(type: $type, sort: $sort) {
         id
-        popularity
         meanScore
         coverImage {
           extraLarge

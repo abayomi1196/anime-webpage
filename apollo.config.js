@@ -1,7 +1,7 @@
 module.exports = {
   client: {
     service: {
-      name: "anime-website",
+      name: "My-Graph-mrsvd",
       url: "https://graphql.anilist.co",
     },
   },

@@ -3,28 +3,25 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 import client from "../apollo-client";
-import { GET_ALL_ANIMES } from "../graphql/queries";
+import { GET_ANIMES } from "../graphql/queries";
 
 export async function getStaticProps() {
-  const { data, loading } = await client.query({
-    query: GET_ALL_ANIMES,
+  const { data } = await client.query({
+    query: GET_ANIMES,
     variables: {
-      page: 1,
-      perPage: 10,
-      type: "MANGA",
+      type: "ANIME",
       sort: "POPULARITY_DESC",
     },
   });
 
   return {
     props: {
-      data: data.Page.media,
-      loading,
+      animes: data.Page.media,
     },
   };
 }
 
-export default function Home({ data, loading }) {
+export default function Home({ animes }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -38,37 +35,22 @@ export default function Home({ data, loading }) {
           Welcome to <a href='https://nextjs.org'>Next.js!</a>
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
         <div className={styles.grid}>
-          {data.map((item) => (
-            <a key={item.id} className={styles.card}>
+          {animes.map((anime) => (
+            <a key={anime.id} className={styles.card}>
               <h2>
-                {item.title.english} - {item.title.userPreferred}
+                {anime.title.english} - {anime.title.userPreferred}
               </h2>
 
               <Image
-                src={item.coverImage.extraLarge}
-                alt={item.title.english}
+                src={anime.coverImage.extraLarge}
+                alt={anime.title.english}
                 width={"250px"}
                 height={"250px"}
                 objectFit={"cover"}
               />
             </a>
           ))}
-
-          <a
-            href='https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
         </div>
       </main>
 
