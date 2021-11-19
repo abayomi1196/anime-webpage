@@ -34,6 +34,12 @@
   padding: 0 5rem;
 }
 
+@media (max-width: 768px) {
+  .header {
+    padding: 0 3rem;
+  }
+}
+
 .coverWrapper {
   height: 400px;
   width: 100%;
@@ -42,6 +48,12 @@
   z-index: 2;
   margin-top: -100px;
   box-shadow: 1px 3px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .coverWrapper {
+    display: none;
+  }
 }
 
 .headerImage {
