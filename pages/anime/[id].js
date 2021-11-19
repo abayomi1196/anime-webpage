@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Head from "next/head";
 
+import parser from "html-react-parser";
+
 import styles from "../../styles/SingleAnime.module.css";
 import client from "../../apollo-client";
 import { GET_ANIMES, GET_SINGLE_ANIME } from "../../graphql/queries";
@@ -59,7 +61,27 @@ function SingleAnime({ singleShow }) {
           />
         </div>
 
-        <h2>{singleShow.title.userPreferred}</h2>
+        <div className={styles.header}>
+          <div className={styles.coverWrapper}>
+            <Image
+              src={singleShow.coverImage.large}
+              alt={singleShow.title.userPreferred}
+              placeholder='blur'
+              blurDataURL={singleShow.coverImage.medium}
+              layout='fill'
+              className={styles.headerImage}
+            />
+          </div>
+
+          <div>
+            <h2>
+              {singleShow.title.userPreferred} -{" "}
+              <i>{singleShow.title.native}</i>
+            </h2>
+
+            <p className='description'>{parser(singleShow.description)}</p>
+          </div>
+        </div>
       </main>
     </div>
   );

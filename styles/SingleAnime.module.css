@@ -25,3 +25,25 @@
   object-fit: cover;
   height: 500px;
 }
+
+.header {
+  display: flex;
+  /* margin-top: -100px; */
+  z-index: 99;
+  align-items: flex-end;
+  padding: 0 5rem;
+}
+
+.coverWrapper {
+  height: 400px;
+  width: 100%;
+  position: relative;
+  margin-right: 20px;
+  z-index: 2;
+  margin-top: -100px;
+  box-shadow: 1px 3px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+.headerImage {
+  object-fit: cover;
+}
