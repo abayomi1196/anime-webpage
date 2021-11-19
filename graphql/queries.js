@@ -40,7 +40,7 @@ export const GET_ANIMES = gql`
 `;
 
 export const GET_SINGLE_ANIME = gql`
-  query singleShow($mediaId: Int) {
+  query singleShow($mediaId: Int, $sort: [CharacterSort]) {
     Media(id: $mediaId) {
       id
       duration
@@ -92,7 +92,7 @@ export const GET_SINGLE_ANIME = gql`
         day
       }
 
-      characters {
+      characters(sort: $sort) {
         nodes {
           image {
             medium

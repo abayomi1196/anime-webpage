@@ -30,6 +30,7 @@ export async function getStaticProps({ params }) {
     query: GET_SINGLE_ANIME,
     variables: {
       mediaId: params.id,
+      sort: "FAVOURITES_DESC",
     },
   });
 
@@ -96,62 +97,94 @@ function SingleAnime({ singleShow }) {
 
         <div className={styles.animeInfo}>
           <div className={styles.animeInfo__details}>
-            <h3>General Details</h3>
-            <p>
-              <span>Source </span>
-              <span>{singleShow.source}</span>
-            </p>
+            <div>
+              <h3>General Details</h3>
+              <p>
+                <span>Source </span>
+                <span>{singleShow.source}</span>
+              </p>
 
-            <p>
-              <span>Format </span>
-              <span>{singleShow.format}</span>
-            </p>
+              <p>
+                <span>Format </span>
+                <span>{singleShow.format}</span>
+              </p>
 
-            <p>
-              <span>Episode Duration </span>
-              <span>{singleShow.duration} mins.</span>
-            </p>
+              <p>
+                <span>Episode Count </span>
+                <span>{singleShow.episodes} episode(s)</span>
+              </p>
 
-            <p>
-              <span>Average Score </span>
-              <span>{singleShow.averageScore}%</span>
-            </p>
+              <p>
+                <span>Episode Duration </span>
+                <span>{singleShow.duration} mins.</span>
+              </p>
 
-            {singleShow.staff.nodes
-              .filter((node) => node.primaryOccupations[0] === "Director")
-              .slice(0, 1)
-              .map((node) => (
-                <p key={node.id}>
-                  <span>{node.primaryOccupations[0]}</span>
-                  <span>{node.name.userPreferred}</span>
-                </p>
-              ))}
+              <p>
+                <span>Average Score </span>
+                <span>{singleShow.averageScore}%</span>
+              </p>
 
-            <h3>Relevant Links</h3>
-
-            {singleShow.externalLinks.map((link) => {
-              if (
-                link.site === "Netflix" ||
-                link.site === "Adult Swim" ||
-                link.site === "Hulu" ||
-                link.site === "Crunchyroll"
-              ) {
-                return (
-                  <p key={link.id}>
-                    <a href={link.url} rel='noreferrer' target='_blank'>
-                      {link.site}
-                    </a>
+              {singleShow.staff.nodes
+                .filter((node) => node.primaryOccupations[0] === "Director")
+                .slice(0, 1)
+                .map((node) => (
+                  <p key={node.id}>
+                    <span>{node.primaryOccupations[0]}</span>
+                    <span>{node.name.userPreferred}</span>
                   </p>
-                );
-              } else {
-                return null;
-              }
-            })}
+                ))}
+            </div>
+
+            <div>
+              <h3>Relevant Links</h3>
+
+              {singleShow.externalLinks.map((link) => {
+                if (
+                  link.site === "Netflix" ||
+                  link.site === "Adult Swim" ||
+                  link.site === "Hulu" ||
+                  link.site === "Crunchyroll"
+                ) {
+                  return (
+                    <p key={link.id}>
+                      <a href={link.url} rel='noreferrer' target='_blank'>
+                        {link.site}
+                      </a>
+                    </p>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </div>
           </div>
 
-          <div>
-            <div className={styles.animeInfo__characters}>Characters</div>
-            <div className={styles.animeInfo__related}>Related</div>
+          <div className={styles.animeInfo__info}>
+            <div className={styles.animeInfo__characters}>
+              <h3>Popular Characters</h3>
+              <div className={styles.characters_grid}>
+                {singleShow.characters.nodes.slice(0, 12).map((character) => (
+                  <div key={character.id} className={styles.singleCharacter}>
+                    <div>
+                      <Image
+                        src={character.image.medium}
+                        width={"150px"}
+                        height={"150px"}
+                        objectFit='cover'
+                        alt={character.name.first}
+                      />
+                    </div>
+                    <p>
+                      {character.name.first} {character.name.middle}{" "}
+                      {character.name.last}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.animeInfo__related}>
+              <h3>Related Shows</h3>
+            </div>
           </div>
         </div>
       </main>
