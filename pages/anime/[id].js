@@ -64,7 +64,7 @@ function SingleAnime({ singleShow }) {
         <div className={styles.header}>
           <div className={styles.coverWrapper}>
             <Image
-              src={singleShow.coverImage.large}
+              src={singleShow.coverImage.extraLarge}
               alt={singleShow.title.userPreferred}
               placeholder='blur'
               blurDataURL={singleShow.coverImage.medium}
@@ -73,13 +73,13 @@ function SingleAnime({ singleShow }) {
             />
           </div>
 
-          <div>
+          <div className={styles.description}>
             <h2>
               {singleShow.title.userPreferred} -{" "}
               <i>{singleShow.title.native}</i>
             </h2>
 
-            <p className='description'>{parser(singleShow.description)}</p>
+            <p>{parser(singleShow.description)}</p>
           </div>
         </div>
       </main>

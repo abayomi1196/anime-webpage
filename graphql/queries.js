@@ -50,7 +50,7 @@ export const GET_SINGLE_ANIME = gql`
 
       coverImage {
         medium
-        large
+        extraLarge
       }
 
       title {

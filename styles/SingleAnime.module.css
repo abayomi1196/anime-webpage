@@ -44,10 +44,11 @@
   height: 400px;
   width: 100%;
   position: relative;
-  margin-right: 20px;
+  margin-right: 60px;
   z-index: 2;
   margin-top: -100px;
   box-shadow: 1px 3px 3px 2px rgba(0, 0, 0, 0.5);
+  flex: 1;
 }
 
 @media (max-width: 768px) {
@@ -58,4 +59,8 @@
 
 .headerImage {
   object-fit: cover;
+}
+
+.description {
+  flex: 2;
 }
