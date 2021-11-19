@@ -90,10 +90,12 @@
   padding: 0 0.6rem;
   margin: 8px 0;
   font-size: 13.5px;
+  color: #4c5257;
 }
 
 .cardText__studios {
   background-color: rgba(202, 208, 216, 0.377);
   padding: 0.6rem;
   font-size: 13px;
+  color: #4c5257;
 }

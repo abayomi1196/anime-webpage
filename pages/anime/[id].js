@@ -41,7 +41,7 @@ function SingleAnime({ singleShow }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{singleShow.title.english}</title>
+        <title>{singleShow.title.english} | Popular Anime List</title>
         <meta
           name='description'
           content={`Anime Web Page showing ${singleShow.title.english} details`}
@@ -75,9 +75,20 @@ function SingleAnime({ singleShow }) {
 
           <div className={styles.description}>
             <h2>
-              {singleShow.title.userPreferred} -{" "}
-              <i>{singleShow.title.native}</i>
+              <span>
+                <i>{singleShow.title.userPreferred}</i>
+              </span>
+              <span>{singleShow.status}</span>
             </h2>
+            <p className={styles.genres}>
+              <span>{singleShow.genres.join(", ")}</span>
+              <span>
+                {singleShow.startDate.year}{" "}
+                {singleShow.endDate.year
+                  ? `- ${singleShow.endDate.year}`
+                  : "Present"}
+              </span>
+            </p>
 
             <p>{parser(singleShow.description)}</p>
           </div>

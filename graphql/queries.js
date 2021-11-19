@@ -47,6 +47,8 @@ export const GET_SINGLE_ANIME = gql`
       description
       bannerImage
       episodes
+      genres
+      status
 
       coverImage {
         medium
@@ -62,6 +64,14 @@ export const GET_SINGLE_ANIME = gql`
       externalLinks {
         site
         url
+      }
+
+      startDate {
+        year
+      }
+
+      endDate {
+        year
       }
 
       characters {
