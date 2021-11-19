@@ -49,6 +49,19 @@ export const GET_SINGLE_ANIME = gql`
       episodes
       genres
       status
+      format
+      averageScore
+      source
+
+      staff {
+        nodes {
+          id
+          name {
+            userPreferred
+          }
+          primaryOccupations
+        }
+      }
 
       coverImage {
         medium
@@ -64,20 +77,25 @@ export const GET_SINGLE_ANIME = gql`
       externalLinks {
         site
         url
+        id
       }
 
       startDate {
         year
+        month
+        day
       }
 
       endDate {
         year
+        month
+        day
       }
 
       characters {
         nodes {
           image {
-            large
+            medium
           }
           id
           name {
@@ -85,7 +103,19 @@ export const GET_SINGLE_ANIME = gql`
             last
             middle
           }
-          description
+        }
+      }
+
+      relations {
+        nodes {
+          title {
+            userPreferred
+          }
+          format
+          status
+          coverImage {
+            medium
+          }
         }
       }
     }

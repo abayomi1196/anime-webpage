@@ -93,6 +93,67 @@ function SingleAnime({ singleShow }) {
             <p>{parser(singleShow.description)}</p>
           </div>
         </div>
+
+        <div className={styles.animeInfo}>
+          <div className={styles.animeInfo__details}>
+            <h3>General Details</h3>
+            <p>
+              <span>Source </span>
+              <span>{singleShow.source}</span>
+            </p>
+
+            <p>
+              <span>Format </span>
+              <span>{singleShow.format}</span>
+            </p>
+
+            <p>
+              <span>Episode Duration </span>
+              <span>{singleShow.duration} mins.</span>
+            </p>
+
+            <p>
+              <span>Average Score </span>
+              <span>{singleShow.averageScore}%</span>
+            </p>
+
+            {singleShow.staff.nodes
+              .filter((node) => node.primaryOccupations[0] === "Director")
+              .slice(0, 1)
+              .map((node) => (
+                <p key={node.id}>
+                  <span>{node.primaryOccupations[0]}</span>
+                  <span>{node.name.userPreferred}</span>
+                </p>
+              ))}
+
+            <h3>Relevant Links</h3>
+
+            {singleShow.externalLinks.map((link) => {
+              if (
+                link.site === "Netflix" ||
+                link.site === "Adult Swim" ||
+                link.site === "Hulu" ||
+                link.site === "Crunchyroll"
+              ) {
+                return (
+                  <p key={link.id}>
+                    <a href={link.url} rel='noreferrer' target='_blank'>
+                      {link.site}
+                    </a>
+                  </p>
+                );
+              } else {
+                return null;
+              }
+            })}
+          </div>
+
+          <div>
+            <div className={styles.animeInfo__characters}>Characters</div>
+            <div className={styles.animeInfo__related}>Related</div>
+          </div>
+        </div>
       </main>
     </div>
   );
