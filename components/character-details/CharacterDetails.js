@@ -1,3 +1,8 @@
+import parser from "html-react-parser";
+import { markdown } from "markdown";
+
+import Image from "next/image";
+
 import { useQuery } from "@apollo/client";
 import { GET_SINGLE_CHARACTER } from "../../graphql/queries";
 
@@ -8,9 +13,7 @@ function CharacterDetails({ characterId }) {
     },
   });
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+  if (loading) return <h2>Loading...</h2>;
 
   if (error) {
     console.error(error);
@@ -18,10 +21,25 @@ function CharacterDetails({ characterId }) {
   }
 
   console.log(data);
+
+  const character = data.Character;
   return (
     <div>
-      hello from single character
-      <h2>{data.Character.name.userPreferred}</h2>
+      <h2>
+        {character.name.userPreferred} - {character.name.native}
+      </h2>
+      <p>{character.gender}</p>
+      <p>{character.age}</p>
+      <p>{parser(markdown.toHTML(character.description))}</p>
+      <Image
+        src={character.image.large}
+        alt={character.name.userPreferred}
+        width={"500px"}
+        height={"450px"}
+        objectFit='cover'
+        placeholder='blur'
+        blurDataURL={character.image.medium}
+      />
     </div>
   );
 }

@@ -9,6 +9,12 @@ function SingleCharacter() {
 
   return (
     <div>
+      <Head>
+        <title>Character Detail | Popular Anime List</title>
+        <meta name='description' content={`Anime Web Page showing details`} />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+
       <ClientOnly>
         <CharacterDetails characterId={query.id} />
       </ClientOnly>
