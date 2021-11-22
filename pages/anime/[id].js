@@ -160,6 +160,7 @@ function SingleAnime({ singleShow }) {
           </div>
 
           <div className={styles.animeInfo__info}>
+            {/* characters */}
             <div className={styles.animeInfo__characters}>
               <h3>Popular Characters</h3>
               <div className={styles.characters_grid}>
@@ -167,11 +168,13 @@ function SingleAnime({ singleShow }) {
                   <div key={character.id} className={styles.singleCharacter}>
                     <div>
                       <Image
-                        src={character.image.medium}
+                        src={character.image.large}
                         width={"150px"}
                         height={"150px"}
                         objectFit='cover'
                         alt={character.name.first}
+                        placeholder='blur'
+                        blurDataURL={character.image.medium}
                       />
                     </div>
                     <p>
@@ -182,9 +185,34 @@ function SingleAnime({ singleShow }) {
                 ))}
               </div>
             </div>
+            {/* end of characters */}
+
+            {/* related shows */}
             <div className={styles.animeInfo__related}>
-              <h3>Related Shows</h3>
+              <h3>Related Media</h3>
+              <div className={styles.related__grid}>
+                {singleShow.relations?.nodes?.map((node) => (
+                  <div key={node.id} className={styles.singleRelation}>
+                    <Image
+                      src={node.coverImage.large}
+                      width={"250px"}
+                      height={"200px"}
+                      objectFit='cover'
+                      alt={node.title.userPreferred}
+                      placeholder='blur'
+                      blurDataURL={node.coverImage.medium}
+                    />
+
+                    <div className={styles.singleRelation__text}>
+                      <h4>{node.title.userPreferred}</h4>
+                      <small>{node.format}</small>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
+
+            {/* end of related shows */}
           </div>
         </div>
       </main>

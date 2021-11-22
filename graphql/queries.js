@@ -96,6 +96,7 @@ export const GET_SINGLE_ANIME = gql`
         nodes {
           image {
             medium
+            large
           }
           id
           name {
@@ -108,13 +109,15 @@ export const GET_SINGLE_ANIME = gql`
 
       relations {
         nodes {
+          id
+          format
+          status
           title {
             userPreferred
           }
-          format
-          status
           coverImage {
             medium
+            large
           }
         }
       }
