@@ -94,11 +94,11 @@ export const GET_SINGLE_ANIME = gql`
 
       characters(sort: $sort) {
         nodes {
+          id
           image {
             medium
             large
           }
-          id
           name {
             first
             last
@@ -120,6 +120,24 @@ export const GET_SINGLE_ANIME = gql`
             large
           }
         }
+      }
+    }
+  }
+`;
+
+export const GET_SINGLE_CHARACTER = gql`
+  query getCharacter($characterId: Int) {
+    Character(id: $characterId) {
+      gender
+      age
+      description
+      name {
+        native
+        userPreferred
+      }
+      image {
+        medium
+        large
       }
     }
   }

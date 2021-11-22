@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Head from "next/head";
+import Link from "next/link";
 
 import parser from "html-react-parser";
 
@@ -165,23 +166,29 @@ function SingleAnime({ singleShow }) {
               <h3>Popular Characters</h3>
               <div className={styles.characters_grid}>
                 {singleShow.characters.nodes.slice(0, 12).map((character) => (
-                  <div key={character.id} className={styles.singleCharacter}>
-                    <div>
-                      <Image
-                        src={character.image.large}
-                        width={"150px"}
-                        height={"150px"}
-                        objectFit='cover'
-                        alt={character.name.first}
-                        placeholder='blur'
-                        blurDataURL={character.image.medium}
-                      />
+                  <Link
+                    key={character.id}
+                    href={`/character/${encodeURIComponent(character.id)}`}
+                    passHref
+                  >
+                    <div key={character.id} className={styles.singleCharacter}>
+                      <div>
+                        <Image
+                          src={character.image.large}
+                          width={"150px"}
+                          height={"150px"}
+                          objectFit='cover'
+                          alt={character.name.first}
+                          placeholder='blur'
+                          blurDataURL={character.image.medium}
+                        />
+                      </div>
+                      <p>
+                        {character.name.first} {character.name.middle}{" "}
+                        {character.name.last}
+                      </p>
                     </div>
-                    <p>
-                      {character.name.first} {character.name.middle}{" "}
-                      {character.name.last}
-                    </p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
