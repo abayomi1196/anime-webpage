@@ -37,7 +37,7 @@ export default function Home({ popularAnimes }) {
 
       <main className={styles.main}>
         <div className={styles.gridWrapper}>
-          <h3>Currently Trending.</h3>
+          <h3>Most Popular.</h3>
           <div className={styles.grid}>
             {popularAnimes.map((anime) => (
               <Card anime={anime} key={anime.id} />
