@@ -18,7 +18,7 @@ function CharacterDetails({ characterId }) {
   const character = data?.Character;
   return (
     <div className={styles.container}>
-      {loading && <p>Loading</p>}
+      {loading && <p>Loading...</p>}
 
       {error && <p>Error loading data...</p>}
 
