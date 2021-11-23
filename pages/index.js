@@ -52,7 +52,6 @@ export default function Home({ popularAnimes }) {
           target='_blank'
           rel='noopener noreferrer'
         >
-          View Code{" "}
           <span>
             <Image src='/github.svg' alt='Github Logo' width={82} height={46} />
           </span>
