@@ -1,8 +1,9 @@
 .container {
   min-height: 100vh;
-  padding: 2rem 8rem;
+  padding: 8rem;
   display: flex;
   max-width: 1200px;
+  gap: 30px;
   margin: 0 auto;
 }
 
@@ -15,6 +16,10 @@
 
 .imageWrapper {
   margin: 0 auto;
+  position: relative;
+  max-width: 750px;
+  min-width: 400px;
+  height: 400px;
 }
 
 .imageWrapper span {
@@ -47,11 +52,17 @@
   font-size: 1em;
 }
 
-.description > p + p {
-  margin-top: 1em;
+.description p,
+.description h2 {
+  display: none;
 }
 
-.description em {
-  display: inline-block;
+.description > p:first-of-type {
+  display: block;
+}
+
+.description > p:nth-of-type(2) {
+  display: block;
   margin-top: 1em;
+  line-height: 1.4;
 }

@@ -15,8 +15,6 @@ function CharacterDetails({ characterId }) {
     },
   });
 
-  console.log(data);
-
   const character = data?.Character;
   return (
     <div className={styles.container}>
@@ -30,9 +28,8 @@ function CharacterDetails({ characterId }) {
             <Image
               src={character.image.large}
               alt={character.name.userPreferred}
-              width={"400px"}
-              height={"450px"}
               objectFit='cover'
+              layout='fill'
               placeholder='blur'
               blurDataURL={character.image.medium}
             />
@@ -54,7 +51,7 @@ function CharacterDetails({ characterId }) {
             <div className={styles.description}>
               {parser(
                 markdown
-                  .toHTML(character.description.replace(/~!.*!~/, ""))
+                  .toHTML(character.description.replace(/~!.*!~/g, ""))
                   .replace(/<strong>/g, "<br /><strong>")
                   .replace(/<br \/>/, "")
               )}
