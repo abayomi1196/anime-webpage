@@ -28,7 +28,6 @@
 
 .header {
   display: flex;
-  /* margin-top: -100px; */
   z-index: 99;
   align-items: center;
   padding: 0 5rem;
