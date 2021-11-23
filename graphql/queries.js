@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_ANIMES = gql`
   query allAnimes($type: MediaType, $sort: [MediaSort]) {
-    Page(page: 1, perPage: 20) {
+    Page(page: 1, perPage: 30) {
       media(type: $type, sort: $sort) {
         id
         genres

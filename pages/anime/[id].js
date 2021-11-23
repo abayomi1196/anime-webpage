@@ -13,7 +13,7 @@ export async function getStaticPaths() {
     query: GET_ANIMES,
     variables: {
       type: "ANIME",
-      sort: "POPULARITY_DESC",
+      sort: "TRENDING_DESC",
     },
   });
 
@@ -88,7 +88,7 @@ function SingleAnime({ singleShow }) {
                 {singleShow.startDate.year}{" "}
                 {singleShow.endDate.year
                   ? `- ${singleShow.endDate.year}`
-                  : "Present"}
+                  : "- Present"}
               </span>
             </p>
 
@@ -198,7 +198,7 @@ function SingleAnime({ singleShow }) {
             <div className={styles.animeInfo__related}>
               <h3>Related Media</h3>
               <div className={styles.related__grid}>
-                {singleShow.relations?.nodes?.map((node) => (
+                {singleShow.relations?.nodes?.slice(0, 6).map((node) => (
                   <div key={node.id} className={styles.singleRelation}>
                     <Image
                       src={node.coverImage.large}
