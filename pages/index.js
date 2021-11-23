@@ -12,7 +12,7 @@ export async function getStaticProps() {
     query: GET_ANIMES,
     variables: {
       type: "ANIME",
-      sort: "TRENDING_DESC",
+      sort: "FAVOURITES_DESC",
     },
   });
 

@@ -13,7 +13,7 @@ export async function getStaticPaths() {
     query: GET_ANIMES,
     variables: {
       type: "ANIME",
-      sort: "TRENDING_DESC",
+      sort: "FAVOURITES_DESC",
     },
   });
 
