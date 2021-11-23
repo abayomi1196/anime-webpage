@@ -15,10 +15,10 @@
 }
 
 .imageWrapper {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   position: relative;
   max-width: 750px;
-  min-width: 400px;
+  min-width: 300px;
   height: 400px;
 }
 
