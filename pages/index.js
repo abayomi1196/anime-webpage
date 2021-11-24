@@ -6,6 +6,8 @@ import client from "../apollo-client";
 import { GET_ANIMES } from "../graphql/queries";
 
 import Card from "../components/card/Card";
+import ClientOnly from "../components/ClientOnly";
+import Search from "../components/search/Search";
 
 export async function getStaticProps() {
   const { data: popularData } = await client.query({
@@ -36,6 +38,7 @@ export default function Home({ popularAnimes }) {
       </Head>
 
       <main className={styles.main}>
+        <Search />
         <div className={styles.gridWrapper}>
           <h3>Most Popular.</h3>
           <div className={styles.grid}>
