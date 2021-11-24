@@ -142,3 +142,41 @@ export const GET_SINGLE_CHARACTER = gql`
     }
   }
 `;
+
+export const GET_SEARCHED_ANIMES = gql`
+  query allAnimes($sort: [MediaSort], $search: String!) {
+    Page(page: 1, perPage: 30) {
+      media(type: "ANIME", sort: $sort, search: $search) {
+        id
+        genres
+        description
+        episodes
+        averageScore
+        format
+
+        coverImage {
+          medium
+          extraLarge
+        }
+
+        title {
+          userPreferred
+          english
+        }
+
+        studios {
+          nodes {
+            name
+          }
+        }
+
+        startDate {
+          year
+        }
+
+        endDate {
+          year
+        }
+      }
+    }
+`;
