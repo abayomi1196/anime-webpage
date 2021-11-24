@@ -1,3 +1,5 @@
+import { useContext } from "react";
+
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -8,6 +10,9 @@ import { GET_ANIMES } from "../graphql/queries";
 import Card from "../components/card/Card";
 import ClientOnly from "../components/ClientOnly";
 import Search from "../components/search/Search";
+import SearchCards from "../components/searched-cards/SearchedCards";
+
+import { SearchContext } from "../context/SearchContext";
 
 export async function getStaticProps() {
   const { data: popularData } = await client.query({
@@ -26,6 +31,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ popularAnimes }) {
+  const { searchTerm } = useContext(SearchContext);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -39,14 +46,20 @@ export default function Home({ popularAnimes }) {
 
       <main className={styles.main}>
         <Search />
-        <div className={styles.gridWrapper}>
-          <h3>Most Popular.</h3>
-          <div className={styles.grid}>
-            {popularAnimes.map((anime) => (
-              <Card anime={anime} key={anime.id} />
-            ))}
+        <ClientOnly>
+          <SearchCards />
+        </ClientOnly>
+
+        {!searchTerm && (
+          <div className={styles.gridWrapper}>
+            <h3>Most Popular.</h3>
+            <div className={styles.grid}>
+              {popularAnimes.map((anime) => (
+                <Card anime={anime} key={anime.id} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </main>
 
       <footer className={styles.footer}>
