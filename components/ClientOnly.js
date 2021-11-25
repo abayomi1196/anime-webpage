@@ -15,5 +15,9 @@ export default function ClientOnly({ children, ...delegated }) {
     return null;
   }
 
-  return <div {...delegated}>{children}</div>;
+  return (
+    <div {...delegated} style={{ width: "100%", marginTop: "-50px" }}>
+      {children}
+    </div>
+  );
 }

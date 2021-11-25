@@ -39,9 +39,11 @@ function SingleSearchCard({ anime }) {
           {anime.averageScore && <p>{anime.averageScore} / 100</p>}
         </div>
       </div>
-      <div className={styles.cardText__description}>
-        {parse(`${anime.description.slice(0, 200)}...`)}
-      </div>
+      {anime.description && (
+        <div className={styles.cardText__description}>
+          {parse(`${anime.description.slice(0, 200)}...`)}
+        </div>
+      )}
 
       <div className={styles.cardText__studios}>
         {anime.studios.nodes

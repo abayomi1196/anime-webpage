@@ -20,19 +20,22 @@ function SearchCards() {
 
   const searchedAnimes = data?.Page?.media;
 
-  if (loading) return <p>Loading...</p>;
-
-  if (error) return <p>Error loading data</p>;
-
   return (
     <main className={styles.main}>
       <div className={styles.gridWrapper}>
         <h3>you searched for `{searchTerm}`</h3>
-        <div className={styles.grid}>
-          {searchedAnimes.map((anime) => (
-            <SingleSearchCard anime={anime} key={anime.id} />
-          ))}
-        </div>
+
+        {loading && <p>Loading...</p>}
+
+        {error && <p>Error loading data</p>}
+
+        {searchedAnimes?.length && (
+          <div className={styles.grid}>
+            {searchedAnimes.map((anime) => (
+              <SingleSearchCard anime={anime} key={anime.id} />
+            ))}
+          </div>
+        )}
       </div>
     </main>
   );
