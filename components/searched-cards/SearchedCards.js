@@ -25,14 +25,16 @@ function SearchCards() {
   if (error) return <p>Error loading data</p>;
 
   return (
-    <div className={styles.gridWrapper}>
-      <h3>you searched for `{searchTerm}`</h3>
-      <div className={styles.grid}>
-        {searchedAnimes.map((anime) => (
-          <SingleSearchCard anime={anime} key={anime.id} />
-        ))}
+    <main className={styles.main}>
+      <div className={styles.gridWrapper}>
+        <h3>you searched for `{searchTerm}`</h3>
+        <div className={styles.grid}>
+          {searchedAnimes.map((anime) => (
+            <SingleSearchCard anime={anime} key={anime.id} />
+          ))}
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 
