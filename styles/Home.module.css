@@ -39,7 +39,7 @@
 .gridWrapper {
   display: flex;
   flex-direction: column;
-  margin: 5em auto;
+  margin: 3em auto;
   max-width: 1400px;
   width: 100%;
 }
@@ -47,7 +47,7 @@
 .gridWrapper h3 {
   text-transform: uppercase;
   text-align: left;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   color: #647380;
   line-height: 1.15;
   letter-spacing: 0.1em;

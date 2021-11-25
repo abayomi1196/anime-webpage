@@ -46,9 +46,11 @@ export default function Home({ popularAnimes }) {
 
       <main className={styles.main}>
         <Search />
-        <ClientOnly>
-          <SearchCards />
-        </ClientOnly>
+        {searchTerm && (
+          <ClientOnly>
+            <SearchCards />
+          </ClientOnly>
+        )}
 
         {!searchTerm && (
           <div className={styles.gridWrapper}>

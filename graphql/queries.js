@@ -144,9 +144,9 @@ export const GET_SINGLE_CHARACTER = gql`
 `;
 
 export const GET_SEARCHED_ANIMES = gql`
-  query searchedAnimes($sort: [MediaSort], $search: String!) {
+  query searchedAnimes($type: MediaType, $sort: [MediaSort], $search: String!) {
     Page(page: 1, perPage: 30) {
-      media(type: "ANIME", sort: $sort, search: $search) {
+      media(type: $type, sort: $sort, search: $search) {
         id
         genres
         description
