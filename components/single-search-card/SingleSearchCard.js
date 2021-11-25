@@ -18,7 +18,7 @@ function SingleSearchCard({ anime }) {
         />
 
         <div className={styles.cardImage__text}>
-          <h4>{anime.title.english}</h4>
+          <h4>{anime.title.english || anime.title.userPreferred}</h4>
           <p>{anime.genres.slice(0, 2).join(", ")}</p>
         </div>
       </div>
