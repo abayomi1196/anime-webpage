@@ -199,22 +199,28 @@ function SingleAnime({ singleShow }) {
               <h3>Related Media</h3>
               <div className={styles.related__grid}>
                 {singleShow.relations?.nodes?.slice(0, 6).map((node) => (
-                  <div key={node.id} className={styles.singleRelation}>
-                    <Image
-                      src={node.coverImage.large}
-                      width={"250px"}
-                      height={"200px"}
-                      objectFit='cover'
-                      alt={node.title.userPreferred}
-                      placeholder='blur'
-                      blurDataURL={node.coverImage.medium}
-                    />
+                  <Link
+                    href={`/searched-anime/${encodeURIComponent(node.id)}`}
+                    key={node.id}
+                    passHref
+                  >
+                    <div className={styles.singleRelation}>
+                      <Image
+                        src={node.coverImage.large}
+                        width={"250px"}
+                        height={"200px"}
+                        objectFit='cover'
+                        alt={node.title.userPreferred}
+                        placeholder='blur'
+                        blurDataURL={node.coverImage.medium}
+                      />
 
-                    <div className={styles.singleRelation__text}>
-                      <h4>{node.title.userPreferred}</h4>
-                      <small>{node.format}</small>
+                      <div className={styles.singleRelation__text}>
+                        <h4>{node.title.userPreferred}</h4>
+                        <small>{node.format}</small>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

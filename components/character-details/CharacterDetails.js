@@ -49,12 +49,14 @@ function CharacterDetails({ characterId }) {
               </p>
             )}
             <div className={styles.description}>
-              {parser(
-                markdown
-                  .toHTML(character.description.replace(/~!.*!~/g, ""))
-                  .replace(/<strong>/g, "<br /><strong>")
-                  .replace(/<br \/>/, "")
-              )}
+              {character.description
+                ? parser(
+                    markdown
+                      .toHTML(character.description.replace(/~!.*!~/g, ""))
+                      .replace(/<strong>/g, "<br /><strong>")
+                      .replace(/<br \/>/, "")
+                  )
+                : "Details N/A"}
             </div>
           </div>
         </>
