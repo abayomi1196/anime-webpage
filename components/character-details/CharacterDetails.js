@@ -2,6 +2,7 @@ import parser from "html-react-parser";
 import { markdown } from "markdown";
 
 import Image from "next/image";
+import Head from "next/head";
 
 import { useQuery } from "@apollo/client";
 import { GET_SINGLE_CHARACTER } from "../../graphql/queries";
@@ -24,6 +25,15 @@ function CharacterDetails({ characterId }) {
 
       {!error && !loading && (
         <>
+          <Head>
+            <title>{character.name.userPreferred} | Popular Anime List</title>
+            <meta
+              name='description'
+              content={`Anime Web Page showing ${character.name.userPreferred} details`}
+            />
+            <link rel='icon' href='/favicon.ico' />
+          </Head>
+
           <div className={styles.imageWrapper}>
             <Image
               src={character.image.large}
