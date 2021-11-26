@@ -12,7 +12,7 @@ function Search() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    updateSearchTerm(searchTerm);
+    updateSearchTerm(searchTerm.trim());
     inputRef.current.blur();
   }
 
