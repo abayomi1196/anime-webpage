@@ -30,12 +30,18 @@ function SingleSearchCard({ anime }) {
             <p>
               <span>
                 {anime.startDate.year}{" "}
-                {anime.endDate.year ? `- ${anime.endDate.year}` : null}
+                {anime.endDate.year && anime.endDate.year > anime.startDate.year
+                  ? `- ${anime.endDate.year}`
+                  : null}
               </span>
               <span>
                 {" "}
                 {anime.format} •{" "}
-                {anime.episodes ? `${anime.episodes} episodes` : "N/A"}
+                {anime.episodes
+                  ? `${anime.episodes} ${
+                      anime.episodes > 1 ? "episodes" : "episode"
+                    }`
+                  : "N/A"}
               </span>
             </p>
             {anime.averageScore && <p>{anime.averageScore} / 100</p>}
