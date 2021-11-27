@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project was created with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), and the [`Anime List Graphql API`](https://studio.apollographql.com/graph/My-Graph-mrsvd/explorer?variant=current).
 
 ## Getting Started
 
-First, run the development server:
+First, install node_modules and then run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+#### Project Architecture
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+  ┣ components
+  ┣ context
+  ┣ graphql
+  ┣ pages
+  ┣ public
+  ┣ styles
+  ┗ utils
+```
 
-## Learn More
+The description of each folder in the project architecture is given below:
 
-To learn more about Next.js, take a look at the following resources:
+- `components`: contains stateful reusable components. Each component has a root folder (pascal cased) which houses the component file and the other associated files. For example, the structure for a `Card` component would be:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ```
+    card
+    ┣ Card.js
+    ┗ Card.module.css
+  ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `context`: contains some application state, which was setup with the React `createContext` hook, allows sharing of data between components without unneccesary prop drilling and eliminates the need for external state management libraries.
 
-## Deploy on Vercel
+- `graphql`: contain graphql queries, may also house mutations in future iterations.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `pages`: Contain functional top level components that are responsible for generating the view for any given route, a sample structure would look like: 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    ```
+      pages
+      ┣ anime
+      ┃ ┗ [id].js - dynamic page where details are statically generated
+      ┣ _app.js 
+      ┗ index.js
+    ```
+
+- `public`: Contains static assets i.e images.
+
+- `styles`: Contain global and page level styles defined using `CSS Modules`
+
+- `utils`: Contains reusable functions.
+
