@@ -1,4 +1,4 @@
-This project was created with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), and the [`Anime List Graphql API`](https://studio.apollographql.com/graph/My-Graph-mrsvd/explorer?variant=current).
+This project was created with [NextJS](https://nextjs.org/docs/getting-started), [CSS Modules](https://github.com/css-modules/css-modules) & the [Anime List Graphql API](https://studio.apollographql.com/graph/My-Graph-mrsvd/explorer?variant=current).
 
 ## Getting Started
 
@@ -15,13 +15,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 #### Project Architecture
 
 ```
-  ┣ components
-  ┣ context
-  ┣ graphql
-  ┣ pages
-  ┣ public
-  ┣ styles
-  ┗ utils
+┣ components
+┣ context
+┣ graphql
+┣ pages
+┣ public
+┣ styles
+┗ utils
 ```
 
 The description of each folder in the project architecture is given below:
@@ -29,9 +29,9 @@ The description of each folder in the project architecture is given below:
 - `components`: contains stateful reusable components. Each component has a root folder (pascal cased) which houses the component file and the other associated files. For example, the structure for a `Card` component would be:
 
   ```
-    card
-    ┣ Card.js
-    ┗ Card.module.css
+  card
+  ┣ Card.js
+  ┗ Card.module.css
   ```
 
 - `context`: contains some application state, which was setup with the React `createContext` hook, allows sharing of data between components without unneccesary prop drilling and eliminates the need for external state management libraries.
@@ -41,11 +41,11 @@ The description of each folder in the project architecture is given below:
 - `pages`: Contain functional top level components that are responsible for generating the view for any given route, a sample structure would look like: 
 
     ```
-      pages
-      ┣ anime
-      ┃ ┗ [id].js - dynamic page where details are statically generated
-      ┣ _app.js 
-      ┗ index.js
+    pages
+    ┣ anime
+    ┃ ┗ [id].js - dynamic page where details are statically generated
+    ┣ _app.js 
+    ┗ index.js
     ```
 
 - `public`: Contains static assets i.e images.
