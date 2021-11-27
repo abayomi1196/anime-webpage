@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 
 import parser from "html-react-parser";
 
+import { monthParser } from "../../utils/monthParser";
+
 import { useQuery } from "@apollo/client";
 import { GET_SINGLE_ANIME } from "../../graphql/queries";
 
@@ -96,11 +98,18 @@ function SearchedAnime() {
                 </h2>
                 <p className={styles.genres}>
                   <span>{singleShow.genres.join(", ")}</span>
+
                   <span>
+                    {monthParser(singleShow.startDate.month)}{" "}
                     {singleShow.startDate.year}{" "}
-                    {singleShow.endDate.year
-                      ? `- ${singleShow.endDate.year}`
-                      : "- Present"}
+                    {/* confirm the existence of an end-date & then check if its year or month values are greater than the start dates' */}
+                    {singleShow.endDate.year &&
+                    (singleShow.endDate.year > singleShow.startDate.year ||
+                      singleShow.endDate.month > singleShow.startDate.month)
+                      ? `- ${monthParser(singleShow.endDate.month)} ${
+                          singleShow.endDate.year
+                        }`
+                      : null}
                   </span>
                 </p>
 
