@@ -26,7 +26,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 The description of each folder in the project architecture is given below:
 
-- `components`: contains stateful reusable components. Each component has a root folder (pascal cased) which houses the component file and the other associated files. For example, the structure for a `Card` component would be:
+- `components`: contains stateful reusable components. Each component has a root folder (kebab-cased) which houses the component file and the other associated files (PascalCased). For example, the structure for a `Card` component would be:
 
   ```
   card
